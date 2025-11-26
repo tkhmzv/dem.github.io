@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New Year Crossword</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a2930, #2c5f2d);
+      color: #f0f0f0;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ffcc00;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 25px;
+    }
+    .grid {
+      display: inline-grid;
+      grid-template-columns: repeat(7, 48px);
+      grid-gap: 2px;
+      margin: 20px auto;
+      background-color: #111;
+      padding: 8px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+    }
+    .cell {
+      width: 48px;
+      height: 48px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      color: #1a1a1a;
+      position: relative;
+      border-radius: 4px;
+    }
+    .cell.black {
+      background-color: #333;
+    }
+    .cell.number::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      font-size: 10px;
+      color: #666;
+      font-weight: bold;
+    }
+    .hints {
+      max-width: 600px;
+      margin: 25px auto;
+      background: rgba(0,0,0,0.3);
+      padding: 16px;
+      border-radius: 10px;
+      text-align: left;
+    }
+    .hints h3 {
+      color: #ffcc00;
+      margin-top: 16px;
+      border-bottom: 1px dashed #555;
+      padding-bottom: 4px;
+    }
+    .hint-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .hint-list li {
+      margin: 8px 0;
+      line-height: 1.4;
+    }
+    .hint-list li::before {
+      content: "• ";
+      color: #ff9900;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎄 New Year Crossword 🎁</h1>
+  <p class="subtitle">Solve the 5-word puzzle about Christmas & New Year!</p>
+
+  <!-- 7×7 Grid -->
+  <div class="grid">
+    <!-- Row 0 -->
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell number" data-num="1">S</div>
+    <div class="cell">N</div>
+    <div class="cell">O</div>
+    <div class="cell">W</div>
+    <div class="cell black"></div>
+
+    <!-- Row 1 -->
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell">T</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 2 -->
+    <div class="cell black"></div>
+    <div class="cell number" data-num="2">T</div>
+    <div class="cell">R</div>
+    <div class="cell">E</div>
+    <div class="cell">E</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 3 -->
+    <div class="cell black"></div>
+    <div class="cell">A</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 4 -->
+    <div class="cell number" data-num="3">G</div>
+    <div class="cell">I</div>
+    <div class="cell">F</div>
+    <div class="cell">T</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 5 -->
+    <div class="cell">B</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 6 -->
+    <div class="cell">E</div>
+    <div class="cell number" data-num="4">S</div>
+    <div class="cell">T</div>
+    <div class="cell">A</div>
+    <div class="cell">R</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+
+    <!-- Row 7 (optional extra for BELL — but fits in col 0) -->
+    <!-- Already: B (row5,col0), E (row6,col0) — need L,L -->
+    <!-- Extend grid? Let's add one more row visually via CSS if needed, but keep 7×7 and use B-E-L-L vertically -->
+    <!-- Actually: we’ll adjust — BELL is column 0, rows 4–7 → need row7 -->
+  </div>
+
+  <!-- We'll extend to 8 rows for BELL -->
+  <!-- Updated grid with 8 rows (7→8) for full BELL -->
+  <!-- But to keep code clean, regenerate full 8×7 grid below -->
+  <!-- ✅ Final corrected grid (8 rows) -->
+  <div class="grid" style="grid-template-columns: repeat(7, 48px);">
+    <!-- Row 0 -->
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell number" data-num="1">S</div>
+    <div class="cell">N</div>
+    <div class="cell">O</div>
+    <div class="cell">W</div>
+    <div class="cell black"></div>
+    <!-- Row 1 -->
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell">T</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 2 -->
+    <div class="cell black"></div>
+    <div class="cell number" data-num="2">T</div>
+    <div class="cell">R</div>
+    <div class="cell">E</div>
+    <div class="cell">E</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 3 -->
+    <div class="cell black"></div>
+    <div class="cell">A</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 4 -->
+    <div class="cell number" data-num="3">G</div>
+    <div class="cell">I</div>
+    <div class="cell">F</div>
+    <div class="cell">T</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 5 -->
+    <div class="cell">B</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 6 -->
+    <div class="cell">E</div>
+    <div class="cell number" data-num="4">S</div>
+    <div class="cell">T</div>
+    <div class="cell">A</div>
+    <div class="cell">R</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <!-- Row 7 -->
+    <div class="cell">L</div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class="cell black"></div>
+    <div class
