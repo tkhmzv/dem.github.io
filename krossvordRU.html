@@ -1,0 +1,99 @@
+import pygame
+import sys
+
+# Инициализация Pygame
+pygame.init()
+
+# Параметры
+CELL_SIZE = 40
+GRID_SIZE = 15
+WIDTH = GRID_SIZE * CELL_SIZE
+HEIGHT = GRID_SIZE * CELL_SIZE + 80  # + место под заголовок
+FONT_SIZE = 24
+TITLE_FONT_SIZE = 32
+
+# Цвета
+BACKGROUND = (250, 250, 255)
+GRID_COLOR = (50, 50, 100)
+TEXT_COLOR = (0, 0, 0)
+HIGHLIGHT_COLOR = (255, 200, 0)
+WORD_LIST_BG = (240, 240, 255)
+
+# Создание окна
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Новогодний кроссворд 🎄")
+
+# Шрифты
+font = pygame.font.SysFont('Arial', FONT_SIZE, bold=True)
+title_font = pygame.font.SysFont('Arial', TITLE_FONT_SIZE, bold=True)
+
+# Инициализация пустой сетки
+grid = [['' for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+
+# Слова и их позиции [слово, x, y, направление ('h' или 'v')]
+words = [
+    ("ёлка", 0, 1, 'h'),
+    ("снегурочка", 0, 3, 'h'),
+    ("снег", 0, 5, 'h'),
+    ("каток", 0, 7, 'h'),
+    ("подарки", 2, 9, 'h'),
+    ("шампанское", 1, 11, 'h'),
+    ("гирлянда", 6, 0, 'v'),
+    ("снеговик", 3, 0, 'v'),
+    ("мишура", 9, 2, 'v'),
+    ("праздник", 12, 3, 'v')
+]
+
+# Заполнение сетки
+for word, x, y, direction in words:
+    for i, char in enumerate(word):
+        if direction == 'h':
+            grid[y][x + i] = char.upper()
+        else:  # 'v'
+            grid[y + i][x] = char.upper()
+
+# Функция отрисовки сетки
+def draw_grid():
+    for row in range(GRID_SIZE):
+        for col in range(GRID_SIZE):
+            rect = pygame.Rect(col * CELL_SIZE, row * CELL_SIZE + 60, CELL_SIZE, CELL_SIZE)
+            pygame.draw.rect(screen, GRID_COLOR, rect, 1)  # тонкая рамка
+            if grid[row][col]:
+                text = font.render(grid[row][col], True, TEXT_COLOR)
+                screen.blit(text, (rect.centerx - text.get_width()//2,
+                                   rect.centery - text.get_height()//2))
+
+# Функция отрисовки списка слов
+def draw_word_list():
+    pygame.draw.rect(screen, WORD_LIST_BG, (0, HEIGHT - 80, WIDTH, 80))
+    y_offset = HEIGHT - 65
+    cols = 5
+    for i, (word, _, _, _) in enumerate(words):
+        text = font.render(f"{i+1}. {word}", True, TEXT_COLOR)
+        x = (WIDTH // cols) * (i % cols) + 20
+        y = y_offset + (i // cols) * 25
+        screen.blit(text, (x, y))
+
+# Главный цикл
+running = True
+while running:
+    screen.fill(BACKGROUND)
+
+    # Заголовок
+    title = title_font.render("НОВОГОДНИЙ КРОССВОРД 🎅", True, (30, 30, 80))
+    screen.blit(title, (WIDTH//2 - title.get_width()//2, 10))
+
+    draw_grid()
+    draw_word_list()
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                running = False
+
+    pygame.display.flip()
+
+pygame.quit()
+sys.exit()
